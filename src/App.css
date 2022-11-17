@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.form-box {
+  width: 500px;
+  height: auto;
+  position: relative;
+  margin: 6% auto;
+  background: skyblue;
+  padding: 5px;
+  overflow: hidden;
+  align-items: center;
+}
