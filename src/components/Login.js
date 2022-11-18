@@ -1,27 +1,22 @@
-import React, { useState,createContext } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 
-export const userNameContext = createContext('hi')
 
-function SignUp() {
+function Login({setData2}) {
     const [value, setValue] = useState({ email: '', password: '' })
-    const [data2, setData2] = useState([]);
-
+    
     const header = {
         'Access-Control-Allow-Origin': '*'
     }
     const navigate = useNavigate()
-    
+
     const submitLogin = (e) => {
         e.preventDefault()
         axios.post('http://localhost:4001/login', value, header)
             .then(Response => {
-                console.log(Response);
                 console.log(Response.data.token);
-                console.log(Response.data.username);
                 setData2(Response.data.username);
-                <userNameContext.Provider value={data2}></userNameContext.Provider>
                 navigate("/HomePage")
             })
             .catch(error => {
@@ -31,6 +26,7 @@ function SignUp() {
 
     return (
         <div>
+
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
@@ -74,4 +70,4 @@ function SignUp() {
     )
 }
 
-export default SignUp
+export default Login

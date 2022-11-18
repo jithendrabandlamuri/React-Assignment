@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import {userNameContext} from './Login'
 
-function HomePage({value}) {
-    const UserName=useContext(userNameContext)
+function HomePage({data2}) {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,8 +20,7 @@ function HomePage({value}) {
                 </p>
             </nav>
             <div>
-                <h1>Welcome {UserName} </h1>
-                <h1>{value}</h1>
+                <h1>Welcome {data2} </h1>
             </div>
 
         </div>
