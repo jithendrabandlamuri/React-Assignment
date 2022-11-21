@@ -87,10 +87,11 @@ router.post("/login", async (req, res) => {
 
 router.post("/addarticle", async (req, res) => {
   try {
-    const { title,text, author } = req.body;
+    const { title,text, author,email } = req.body;
 
     // Create user in our database
     const article = await Article.create({
+      email:email,
       title:title,
       text: text,
       author: author
@@ -113,6 +114,24 @@ router.get("/viewarticle", async (req, res) => {
   catch (error) {
     console.log("Error while fetching the data", error);
     res.status(500).json({ message: "Error while fetching the data", error });
+  }
+});
+
+//Delete user
+
+router.delete("/delete-user/:emailId", async (req, res) => {
+  const emailId = req.params.emailId;
+
+  const userObject = await Article.findOne({ emailId });
+
+  try {
+    const deleteResponse = await userObject.delete();
+    res
+      .status(200)
+      .json({ message: "Article deleted successfully", response: deleteResponse });
+  } catch (error) {
+    console.log("Article deletion Failed", error);
+    res.status(500).json({ message: "Article deletion Failed", error });
   }
 });
 

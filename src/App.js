@@ -11,17 +11,17 @@ import { useState } from 'react';
 
 
 function App() {
-  const [data2, setData2] = useState('');
+  const [data2, setData2] = useState({name:'',email:''});
   return (
     <div className="App">
       <>
         <Routes>
           <Route path='/' element={<MainPage />}></Route>
           <Route path='/signUp' element={<SignUp />}></Route>
-          <Route path='/login' element={<Login setData2={setData2}/>}></Route>
-          <Route path='/HomePage' element={<HomePage data2={data2} />}></Route>
-          <Route path='/AddArticle' element={<AddArticle />}></Route>
-          <Route path='/ViewArticle' element={<ViewArticle />}></Route>
+          <Route path='/login' element={<Login data2={data2} setData2={setData2}/>}></Route>
+          <Route path='/HomePage' element={<HomePage name={data2.name} email={data2.email}/>}></Route>
+          <Route path='/AddArticle' element={<AddArticle email={data2.email} />}></Route>
+          <Route path='/ViewArticle' element={<ViewArticle email={data2.email}/>}></Route>
         </Routes>
       </>
     </div>

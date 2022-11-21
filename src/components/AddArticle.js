@@ -2,15 +2,13 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-function AddArticle() {
-    const [value, setValue] = useState({ title: '', text: '', author: '' })
+function AddArticle({email}) {
+    const [value, setValue] = useState({ title: '', text: '', author: '',email:email })
+    
     const submitAdd = (e) => {
         axios.post('http://localhost:4001/addarticle', value)
             .then(Response => {
                 console.log(Response);
-                if (Response.status === 201) {
-                    alert('Added Article Successfully')
-                }
             })
             .catch(error => {
                 console.log(error);

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-function Login({setData2}) {
+function Login({data2,setData2}) {
     const [value, setValue] = useState({ email: '', password: '' })
     
     const header = {
@@ -16,7 +16,8 @@ function Login({setData2}) {
         axios.post('http://localhost:4001/login', value, header)
             .then(Response => {
                 console.log(Response.data.token);
-                setData2(Response.data.username);
+                setData2({...data2,name:Response.data.username});
+                setData2({...data2,email:Response.data.email});
                 navigate("/HomePage")
             })
             .catch(error => {

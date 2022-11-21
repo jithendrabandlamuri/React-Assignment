@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function HomePage({data2}) {
+function HomePage({name,email}) {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,9 +20,8 @@ function HomePage({data2}) {
                 </p>
             </nav>
             <div>
-                <h1>Welcome {data2} </h1>
+                <h1>Welcome {name} & {email} </h1>
             </div>
-
         </div>
     )
 }
